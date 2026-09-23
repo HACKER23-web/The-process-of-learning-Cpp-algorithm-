@@ -1,0 +1,29 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+#define ll long long
+#define SB 1000000001
+int main()
+{
+  int n;
+  cin>>n;
+  int a[100001];
+  int b[100001];
+  for(int i=0;i<n;i++){
+    cin>>a[i];
+  }
+  for(int i=0;i<n;i++){
+    cin>>b[i];
+  }
+
+  ll ret=0;     //有可能超过int，所以得写long long
+  unordered_map<ll, int> hash;
+  for(int j=0;j<n;j++){
+    ll y=b[j]*SB+a[j];
+    ret+=hash[y];
+    ll x=a[j]*SB+b[j];
+    hash[x]++;
+  }
+  cout<<ret<<endl;
+  return 0;
+}
