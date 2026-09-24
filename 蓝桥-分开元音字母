@@ -1,0 +1,37 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+bool isYuanyi(char c){
+  return c=='a'||c=='e'||c=='i'||c=='o'||c=='u';
+}
+
+string s;
+string ret;
+
+
+int main()
+{
+  cin>>s;
+  int cnt=0;
+  ret='(';
+  bool flag=false;
+  for(int i=0;i<s.size();i++){
+    if(isYuanyi(s[i])){
+      cnt++;
+      flag=true;
+      if(cnt>1){
+        ret+=')';
+        ret+='(';
+        cnt=1;
+      }
+    }
+    ret+=s[i];
+  }
+  ret+=')';
+  if(flag==false){
+    ret=s;
+  }
+  cout<<ret<<endl;
+  return 0;
+}
